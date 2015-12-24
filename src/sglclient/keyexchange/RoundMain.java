@@ -83,6 +83,14 @@ public class RoundMain {
 					Wait();	//通信相手ポートをオープンするまで少し待つ
 					exKey.calculatePublicKey();	//公開鍵を計算
 					SendFrom SF = new SendFrom(SendToIP,Round_Port);		//公開鍵を交換
+//                                        if(不正検知オプション＝＝ON){
+//                                            String serverIP=new EditOptionXml().getIP();
+//                                            Round_Port=Integer.parseInt("5"+自分のID)
+//                                            SendFrom SF=new SendFrom(SendToIP,serverIP,Round_Port);
+//                                        }else{
+//                                            SendFrom SF = new SendFrom(SendToIP,Round_Port);		//公開鍵を交換
+//                                        }
+//                                        
 					String line = SF.KeyExchange(exKey.getPublicKey());		//受信した公開鍵を取得
 					//　受信したものが公開鍵と確認できれば共通鍵の計算
 					if( line.substring(0,3).equals("pk:") ){
