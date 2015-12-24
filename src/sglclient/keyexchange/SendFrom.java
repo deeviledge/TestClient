@@ -14,7 +14,7 @@ import java.net.Socket;
 
 public class SendFrom {
 	private Socket socket;
-	public  SendFrom(String peerip,int roundport){
+	public  SendFrom(String peerip,int roundport){//交換先IP,使用するポート
 		try {
 			socket = new Socket( peerip , roundport );
 		} catch (IOException e) {
