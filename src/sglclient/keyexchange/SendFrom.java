@@ -28,12 +28,12 @@ public class SendFrom {
         public  SendFrom(String peerip,String serverip,int roundport){
 		try {
                     serversoc=new ServerSocket(roundport);
-                    socket =serversoc.accept();
+                    socket =serversoc.accept();//待機状態へ移行
                     while(socket.isConnected())
-                    {
+                    {//サーバからの接続要求を待機する
                         System.out.println("Socketからの接続要求を待機中...");
                     }
-                    System.out.println(socket.getInetAddress()+"接続完了");//接続先アドレスを返して表示
+                    System.out.println("SGLサーバ："+socket.getInetAddress()+"との接続完了");//接続先アドレスを返して表示
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
