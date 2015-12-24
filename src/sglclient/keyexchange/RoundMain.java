@@ -78,16 +78,16 @@ public class RoundMain {
 				}
 				
 				//先に自分の公開鍵を送る
-				else if(myid<SendToID){
+                                else if(myid<SendToID){
 					System.out.println("User "+SendToID+"と交換します");
 					Wait();	//通信相手ポートをオープンするまで少し待つ
 					exKey.calculatePublicKey();	//公開鍵を計算
 					SendFrom SF = new SendFrom(SendToIP,Round_Port);		//公開鍵を交換
-//                                        if(不正検知オプション＝＝ON){
+//                                        if(不正検知オプション＝＝ON){//不正検知オプションがONの時の処理
 //                                            String serverIP=new EditOptionXml().getIP();
 //                                            Round_Port=Integer.parseInt("5"+自分のID)
 //                                            SendFrom SF=new SendFrom(SendToIP,serverIP,Round_Port);
-//                                        }else{
+//                                        }else{//不正検知オプションがOFFのときの処理
 //                                            SendFrom SF = new SendFrom(SendToIP,Round_Port);		//公開鍵を交換
 //                                        }
 //                                        
