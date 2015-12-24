@@ -10,11 +10,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.math.BigInteger;
+import java.net.ServerSocket;
 import java.net.Socket;
+
 
 public class SendFrom {
 	private Socket socket;
-	public  SendFrom(String peerip,int roundport){//交換先IP,使用するポート
+        private ServerSocket serversoc;
+	public  SendFrom(String peerip,int roundport){
 		try {
 			socket = new Socket( peerip , roundport );
 		} catch (IOException e) {
@@ -22,6 +25,23 @@ public class SendFrom {
 			e.printStackTrace();
 		}
 	}
+        public  SendFrom(String peerip,String serverip,int roundport){
+		try {
+                    serversoc=new ServerSocket(roundport);
+                    socket =serversoc.accept();
+                    while(socket.isConnected())
+                    {
+                        System.out.println("Socketからの接続要求を待機中...");
+                    }
+                    System.out.println(socket.getInetAddress()+"接続完了");//接続先アドレスを返して表示
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	}
+        
+        
+        
 	/**
 	 * 
 	 * @param pk
