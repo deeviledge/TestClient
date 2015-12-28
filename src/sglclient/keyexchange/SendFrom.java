@@ -25,8 +25,11 @@ public class SendFrom {
 			e.printStackTrace();
 		}
 	}
+        
+        //コンストラクタのオーバーライド
         public  SendFrom(String peerip,String serverip,int roundport){
 		try {
+                    System.out.println("サーバソケットを生成するよ");
                     serversoc=new ServerSocket(roundport);
                     socket =serversoc.accept();//待機状態へ移行
                     while(socket.isConnected())
@@ -54,7 +57,7 @@ public class SendFrom {
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			//公開鍵を送信
 			String input = "pk:";
-			input += ""+pk;
+			input += ""+pk;//文字列変換
 			out.println(input);
 			//System.out.println("Peer client :" + "送信:" + input);
 			//公開鍵を受信
