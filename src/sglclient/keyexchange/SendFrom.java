@@ -29,17 +29,17 @@ public class SendFrom {
         //コンストラクタのオーバーライド
         public  SendFrom(String peerip,String serverip,int roundport){
 		try {
-                    System.out.println("サーバソケットを生成するよ");
-                    serversoc=new ServerSocket(roundport);
-                    socket =serversoc.accept();//待機状態へ移行
+                    System.out.println("ソケットを生成/ServerSocketに接続を要求します");
+                    socket = new Socket( serverip , roundport );
                     while(socket.isConnected())
                     {//サーバからの接続要求を待機する
-                        System.out.println("Socketからの接続要求を待機中...");
+                        System.out.println("ServerSocketからの接続要求を待機中...");
                     }
                     System.out.println("SGLサーバ："+socket.getInetAddress()+"との接続完了");//接続先アドレスを返して表示
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
+                        System.out.println("ソケット生成プロセスでなんかあったぞ！");
 		}
 	}
         
@@ -75,3 +75,4 @@ public class SendFrom {
 		
 	}
 }
+
